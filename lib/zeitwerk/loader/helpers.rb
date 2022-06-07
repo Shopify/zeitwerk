@@ -15,7 +15,7 @@ module Zeitwerk::Loader::Helpers
 
   # @sig (String) { (String, String) -> void } -> void
   def ls(dir)
-    Dir.each_child(dir) do |basename|
+    Dir["*", base: dir].each do |basename|
       next if hidden?(basename)
 
       abspath = File.join(dir, basename)
